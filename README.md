@@ -1,7 +1,8 @@
 # Jack Js
 
-Jack of all trades is now in Javascript flavour!
+Minimal sets of utilities.
 
+Jack of all trades is now in Javascript flavour!  
 PHP counterpart over [here](https://github.com/I-is-as-I-does/Jack).
 
 This is a work in progress.  
