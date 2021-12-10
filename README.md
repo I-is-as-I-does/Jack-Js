@@ -25,7 +25,7 @@ Just take a look at those files already!
 
 ```js
 isEmpty(it)
-isElement(Obj)
+isElement(obj)
 seemsLikeValidDate(string)
 isNonEmptyStr(it)
 isNonEmptyObj(it)

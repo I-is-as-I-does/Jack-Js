@@ -12,8 +12,8 @@ export function isNonEmptyStr(it) {
 export function seemsLikeValidDate(string) {
   return isNonEmptyStr(string) && !isNaN(new Date(string));
 }
-export function isElement(Obj) {
-  return Obj instanceof Element;
+export function isElement(obj) {
+  return obj instanceof Element;
 }
 export function isEmpty(it){
   if(typeof it == 'object'){
