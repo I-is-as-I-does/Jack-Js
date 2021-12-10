@@ -1,3 +1,5 @@
+/* Jack Js | (c) 2021 I-is-as-I-does | MIT License */
+
 export function nonRenderedElmHeight(elm) {
   var clone = elm.cloneNode(true);
   clone.style.visibility = "hidden";
@@ -65,9 +67,6 @@ export function cssExtract(strength = 2) {
     });
   };
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    function () {
       setTimeout(function () {
         loopcall([document.querySelector("html"), document.body]);
         for (let [k, v] of Object.entries(s)) {
@@ -80,7 +79,17 @@ export function cssExtract(strength = 2) {
         outputElm.textContent = fs;
         document.body.append(outputElm);
       }, 3000);
-    },
-    false
-  );
+}
+
+export function autoScrollToBottom(elm) {
+  elm.scrollIntoView({
+    block: "end",
+    behavior: "smooth",
+  });
+}
+export function autoScrollToTop(elm) {
+  elm.scrollIntoView({
+    block: "start",
+    behavior: "smooth",
+  });
 }

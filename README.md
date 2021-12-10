@@ -8,10 +8,6 @@ PHP counterpart over [here](https://github.com/I-is-as-I-does/Jack).
 This is a work in progress.  
 Cherrypick anything.
 
-## Overview
-
-To be done. 
-
 ## Notable mentions 
 
 - easy dynamic CSS/JS loading
@@ -22,6 +18,72 @@ To be done.
 - easy local storage handling
 
 Just take a look at those files already!
+
+## Overview
+
+### Check
+
+```js
+isEmpty(it)
+isElement(Obj)
+seemsLikeValidDate(string)
+isNonEmptyStr(it)
+isNonEmptyObj(it)
+isNonEmptyArr(it)
+```
+
+### Help
+
+```js
+ucFirst(string)
+randomInt(min, max)
+charCut(string, limit)
+randomString(length = 10)
+waitForElmInDOM(elmSelector, parentElm = null)
+replaceDiacritics(text)
+escapeRegExp(string)
+```
+
+### Stock
+
+```js
+getSessionStorage()
+getLocalStorage()
+sizeInBytes(s)
+jsonSize(obj, inKb = true)
+clearPartialStorage(store, threshold = 2000)
+isStorageAvailable(type)
+copyToClipboard(content, callback)
+```
+
+### Style
+
+```js
+nonRenderedElmHeight(elm)
+elmHasStyle(elm, property)
+cssExtract(strength = 2)
+autoScrollToBottom(elm)
+autoScrollToTop(elm)
+```
+
+### Web
+
+```js
+loadJs(signatureVar, url)
+isValidHttpUrl(string)
+loadJson(url)
+oembedLink(url, provider, maxwidth = null, maxheight = null)
+oembedResponse(oembedLink)
+oembedIframe(oembedResponse)
+pathBasename(path)
+pageHasSheet(signatureRule, url)
+loadCss(signatureRule, url, shadowRootElm = null)
+loadPagePreviewImg(url, useCache = true)
+conciseUrl(string, withPath = true)
+miniUrl(string)
+searchUrlParam(name)
+```
+
 
 ## Contributing
 

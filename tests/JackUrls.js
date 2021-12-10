@@ -1,4 +1,4 @@
-import {conciseUrl } from './../src/Trades/Web.js';
+import {conciseUrl } from './../src/Web.js';
 
     var urls = [
     "http://newyorker.com",

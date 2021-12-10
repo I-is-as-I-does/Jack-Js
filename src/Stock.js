@@ -1,13 +1,17 @@
+/* Jack Js | (c) 2021 I-is-as-I-does | MIT License */
+
 export function getLocalStorage() {
   if (isStorageAvailable("localStorage")) {
     return localStorage;
   }
+  return null;
 }
 
 export function getSessionStorage() {
   if (isStorageAvailable("sessionStorage")) {
     return sessionStorage;
   }
+  return null;
 }
 
 export function sizeInBytes(s) {
@@ -22,19 +26,18 @@ export function jsonSize(obj, inKb = true) {
   return sz;
 }
 
-export function clearPartialStorage(store, currentKb = null, threshold = 2000) {
-  if (currentKb == null) {
-    currentKb = jsonSize(store, true);
-  }
+export function clearPartialStorage(store, threshold = 2000) {
+    var currentKb = jsonSize(store, true);
   for (var i = 0; i < store.length; i++) {
+    if (currentKb < threshold) {
+      break;
+    }
     var itmkey = store.key(i);
     var itemsize = jsonSize(store.getItem(itmkey), true);
     store.removeItem(itmkey);
-    currentKb += itemsize;
-    if (currentKb > threshold) {
-      break;
-    }
+    currentKb -= itemsize;
   }
+  return currentKb;
 }
 
 export function isStorageAvailable(type) {

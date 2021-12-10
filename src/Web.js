@@ -1,3 +1,5 @@
+/* Jack Js | (c) 2021 I-is-as-I-does | MIT License */
+
 export function loadJs(signatureVar, url) {
   if (!window[signatureVar]) {
     return new Promise((resolve, reject) => {
@@ -49,13 +51,28 @@ export function oembedLink(url, provider, maxwidth = null, maxheight = null) {
   return false;
 }
 
-export function oembedHtml(oembedLink) {
+export function oembedResponse(oembedLink){
   return loadJson(oembedLink).then((response) => {
     if (response && response.hasOwnProperty("html")) {
-      return response.html;
+      return response;
     }
     throw "invalid oembed response";
   });
+}
+
+export function oembedIframe(oembedResponse){
+  //@doc: rebuilding iframe elm for super safe dom insertion
+      var url = oembedResponse.html.split('src="')[1].split('"')[0];
+      var iframe = document.createElement('IFRAME');
+      iframe.width = oembedResponse.width;
+      iframe.height = oembedResponse.height;
+      iframe.frameborder = "no";
+      iframe.scrolling="no";
+      iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allowfullscreen = true;
+      iframe.title = oembedResponse.title;
+      iframe.src = url;
+      return iframe;
 }
 
 export function pathBasename(path) {
@@ -70,7 +87,7 @@ export function pageHasSheet(signatureRule, url) {
         if (sheetUrl == url || pathBasename(sheetUrl) == basename) {
           return true;
         }
-        if (sheetUrl.startsWith(window.location.origin)) {
+        if (sheetUrl.startsWith(window.location.origin) && document.styleSheets[i].hasOwnProperty('cssRules')) {
           var rules = document.styleSheets[i].cssRules;
 
           for (let i = 0; i < rules.length; i++) {
@@ -86,6 +103,7 @@ export function pageHasSheet(signatureRule, url) {
 }
 
 export function loadCss(signatureRule, url, shadowRootElm = null) {
+
   if (shadowRootElm || !pageHasSheet(signatureRule, url)) {
     return new Promise((resolve, reject) => {
       var link = document.createElement("link");
@@ -99,6 +117,7 @@ export function loadCss(signatureRule, url, shadowRootElm = null) {
       } else {
         document.head.append(link);
       }
+       
     });
   } else {
     return Promise.resolve(true);
@@ -124,7 +143,6 @@ export function loadPagePreviewImg(url, useCache = true) {
         url +
         "&screenshot=true"
     ).then((response) => {
-      console.log(response);
       if (
         response.lighthouseResult &&
         response.lighthouseResult.audits &&
@@ -154,7 +172,7 @@ export function conciseUrl(string, withPath = true) {
     }
     var last = base.pop();
     if (last.length > 18) {
-      last = "..." + last.substr(-15);
+      last = "..." + last.substring(-15);
     }
     string += "/" + last;
   }

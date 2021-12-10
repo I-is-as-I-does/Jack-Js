@@ -1,3 +1,5 @@
+/* Jack Js | (c) 2021 I-is-as-I-does | MIT License */
+
 export function isNonEmptyArr(it) {
   return Array.isArray(it) && it.length;
 }
@@ -14,6 +16,9 @@ export function isElement(Obj) {
   return Obj instanceof Element;
 }
 export function isEmpty(it){
-  return !it || (typeof it == 'object' && !Object.keys(it).length) || !it.length;
+  if(typeof it == 'object'){
+    return !Object.keys(it).length
+  }
+  return !it || !it.length;
  }
  
