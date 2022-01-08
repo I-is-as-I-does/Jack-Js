@@ -82,6 +82,7 @@ loadPagePreviewImg(url, useCache = true)
 conciseUrl(string, withPath = true)
 miniUrl(string)
 searchUrlParam(name)
+toLastSlash(url)
 ```
 
 
