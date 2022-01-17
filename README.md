@@ -19,6 +19,22 @@ Cherrypick anything.
 
 Just take a look at those files already!
 
+## How to
+
+Install
+
+```bash
+npm install @i-is-as-i-does/jack-js
+```
+
+Use
+
+```js
+import Jack from '@i-is-as-i-does/jack-js';
+
+console.log(Jack.ucFirst('bob'))
+```
+
 ## Overview
 
 ### Check
@@ -42,6 +58,8 @@ randomString(length = 10)
 waitForElmInDOM(elmSelector, parentElm = null)
 replaceDiacritics(text)
 escapeRegExp(string)
+deepCopy (obj) 
+splitOnLineBreaks (string)
 ```
 
 ### Stock
@@ -83,6 +101,8 @@ conciseUrl(string, withPath = true)
 miniUrl(string)
 searchUrlParam(name)
 toLastSlash(url)
+displayUrl (url)
+stripHttp (url)
 ```
 
 
