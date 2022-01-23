@@ -61,8 +61,10 @@ export function oembedResponse (oembedLink) {
   })
 }
 
+
 export function oembedIframe (oembedResponse) {
-  // @doc: rebuilding iframe elm for super safe dom insertion
+    // @doc: rebuilding iframe elm for super safe dom insertion
+  return Promise.resolve((resolve, reject) => {
   var url = oembedResponse.html.split('src="')[1].split('"')[0]
   var iframe = document.createElement('IFRAME')
   iframe.width = oembedResponse.width
@@ -72,13 +74,16 @@ export function oembedIframe (oembedResponse) {
   iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
   iframe.allowfullscreen = true
   iframe.title = oembedResponse.title
+  iframe.onload = () => resolve(iframe)
+  iframe.onerror = () => reject(new Error('failed to load ' + url))
   iframe.src = url
-  return iframe
+  })
 }
 
 export function pathBasename (path) {
   return path.split(/[\\/]/).pop()
 }
+
 export function pageHasSheet (signatureRule, url) {
   if (document.styleSheets.length) {
     var basename = pathBasename(url)
