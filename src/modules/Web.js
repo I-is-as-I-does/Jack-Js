@@ -64,7 +64,7 @@ export function oembedResponse (oembedLink) {
 
 export function oembedIframe (oembedResponse) {
     // @doc: rebuilding iframe elm for super safe dom insertion
-  return Promise.resolve((resolve, reject) => {
+  return new Promise((resolve, reject) => {
   var url = oembedResponse.html.split('src="')[1].split('"')[0]
   var iframe = document.createElement('IFRAME')
   iframe.width = oembedResponse.width
