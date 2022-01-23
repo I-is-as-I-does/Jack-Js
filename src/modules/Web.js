@@ -62,7 +62,7 @@ export function oembedResponse (oembedLink) {
 }
 
 
-export function oembedIframe (oembedResponse, onSuccess, onFail) {
+export function oembedIframe (oembedResponse) {
     // @doc: rebuilding iframe elm for super safe dom insertion
   var url = oembedResponse.html.split('src="')[1].split('"')[0]
   var iframe = document.createElement('IFRAME')
@@ -73,9 +73,8 @@ export function oembedIframe (oembedResponse, onSuccess, onFail) {
   iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
   iframe.allowfullscreen = true
   iframe.title = oembedResponse.title
-  iframe.onload = () => onSuccess(iframe)
-  iframe.onerror = () => onFail(url)
   iframe.src = url
+  return iframe
 }
 
 export function pathBasename (path) {
