@@ -168,12 +168,19 @@ export function stripHttp (url) {
   return url.replace(/^(https?:\/\/)?/, '')
 }
 
+export function stripLastSlash (url) {
+  return url.replace(/\/?$/, '')
+}
+
 export function displayUrl (url) {
   return stripHttp(url).replace(/\/*$/, '')
 }
 
 export function conciseUrl (string, withPath = true) {
   var base = stripHttp(string).split('/')
+  if(!base[base.length -1]){
+    base.pop()
+  }
   string = base[0]
   if (withPath && base.length > 1) {
     if (base.length > 2) {

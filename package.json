@@ -1,6 +1,6 @@
 {
   "name": "@i-is-as-i-does/jack-js",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Minimal sets of utilities. Notable mentions: easy dynamic CSS/JS loading, easy oembed request, pretty url shorteners, element-in-dom promise, template CSS stylesheet generator, easy local storage handling.",
   "main": "src/Jack.js",
   "type": "module",

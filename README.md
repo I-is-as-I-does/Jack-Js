@@ -103,6 +103,7 @@ searchUrlParam(name)
 toLastSlash(url)
 displayUrl (url)
 stripHttp (url)
+stripLastSlash (url)
 ```
 
 
