@@ -22,8 +22,7 @@ export function charCut (string, limit, cutAnywhere = false) {
     } 
       var sp = string.split(/\s/)
      for(var p = sp.length - 1; p > -1; p--){
-       console.log(string)
-      string = string.slice(0,- sp[p].length +1)
+      string = string.slice(0, - (sp[p].length + 1))
       if(string.length + 6 < limit){
           break;
       }     
