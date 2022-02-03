@@ -8,11 +8,28 @@ export function randomInt (min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-export function charCut (string, limit) {
-  if (string.length > limit) {
-    string = string.substring(0, limit - 6) + ' (...)'
+export function charCut (string, limit, cutAnywhere = false) {
+  string = string.trimEnd()
+  if (string.length <= limit) {
+    return string
   }
-  return string
+    if(limit < 6){
+      return '(...)'
+    }
+
+    if(cutAnywhere || !string.match(/\s/)){
+     return string.substring(0, limit - 5) + '(...)'
+    } 
+      var sp = string.split(/\s/)
+     for(var p = sp.length - 1; p > -1; p--){
+       console.log(string)
+      string = string.slice(0,- sp[p].length +1)
+      if(string.length + 6 < limit){
+          break;
+      }     
+     }
+     string += ' (...)'
+     return string
 }
 
 export function randomString (length = 10) {

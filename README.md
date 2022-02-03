@@ -53,7 +53,7 @@ isNonEmptyArr(it)
 ```js
 ucFirst(string)
 randomInt(min, max)
-charCut(string, limit)
+charCut(string, limit, cutAnywhere = false)
 randomString(length = 10)
 waitForElmInDOM(elmSelector, parentElm = null)
 replaceDiacritics(text)
