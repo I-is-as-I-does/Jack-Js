@@ -18,8 +18,12 @@ export function sizeInBytes (s) {
   return new TextEncoder().encode(s).length
 }
 
-export function jsonSize (obj, inKb = true) {
-  var sz = sizeInBytes(JSON.stringify(obj))
+export function jsonSize (obj, inKb = true, alreadyJson = false) {
+  var json = obj
+  if(!alreadyJson){
+    json = JSON.stringify(obj)
+  }
+  var sz = sizeInBytes(json)
   if (inKb) {
     sz = sz / 1000
   }
