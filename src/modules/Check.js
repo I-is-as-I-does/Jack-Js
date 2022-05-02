@@ -21,3 +21,7 @@ export function isEmpty (it) {
   }
   return !it || !it.length
 }
+
+export function isEven(numbr) {
+  return numbr % 2 === 0
+}

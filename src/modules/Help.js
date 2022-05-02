@@ -172,3 +172,19 @@ export function splitOnLineBreaks (string) {
 export function deepCopy (obj) {
   return JSON.parse(JSON.stringify(obj))
 }
+
+
+export function toNum(string) {
+  if (parseFloat(string) == string) {
+    return +string
+  }
+  var rplc = string.toString().replace(/,/, '.')
+  if (parseFloat(rplc) == rplc) {
+    return +rplc
+  }
+  var extr = rplc.match(/\d+(\.\d+)?/g)
+  if (extr) {
+    return parseFloat(extr)
+  }
+  return 0
+}

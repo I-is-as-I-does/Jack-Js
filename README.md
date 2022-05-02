@@ -46,6 +46,7 @@ seemsLikeValidDate(string)
 isNonEmptyStr(it)
 isNonEmptyObj(it)
 isNonEmptyArr(it)
+isEven(numbr)
 ```
 
 ### Help
@@ -60,6 +61,7 @@ replaceDiacritics(text)
 escapeRegExp(string)
 deepCopy (obj) 
 splitOnLineBreaks (string)
+toNum(string)
 ```
 
 ### Stock
